@@ -1,3 +1,6 @@
+mod mod2;
+mod mod3;
+mod mod4;
 fn main() {
     let name = "zhaoqiang";
     println!("Hello, {}!", name);
@@ -5,10 +8,24 @@ fn main() {
     println!("{{或}}");
     test1();
     let c = add(1, 2);
-    println!("name is {}", c);
-    test2();
-    test3();
-    test4();
+    println!("c is {}", c);
+    // panic!("错误，程序退出");
+    // test2();
+    // test3();
+    // test4();
+    // test7();
+    // test8();
+    // mod2::test1();
+    // mod2::test2();
+    // mod2::test3();
+    // mod2::test4();
+    mod2::test5();
+    mod2::test6();
+    mod2::test7();
+    mod2::test8();
+    mod2::test9();
+    // mod3::test1();
+    // mod4::test1();
 }
 fn test1() {
     let x = 5;
@@ -59,4 +76,42 @@ fn test4() {
     let part2 = &s[5..9];
 
     println!("{}={}+{}", s, part1, part2);
+}
+
+fn test7() {
+    enum Book {
+        Papery(u32),
+        Electronic { url: String },
+        Both(u32, String),
+    }
+
+    let book = Book::Papery(1001);
+    let ebook = Book::Electronic {
+        url: String::from("url..."),
+    };
+    let bbook = Book::Both(1, String::from("www.baidu.com"));
+
+    match bbook {
+        Book::Papery(i) => {
+            println!("Papery book {}", i);
+        }
+        Book::Electronic { url } => {
+            println!("E-book {}", url);
+        }
+        Book::Both(i, url) => {
+            println!("Both {}-{}", i, url);
+        }
+    }
+}
+
+fn test8() {
+    let t = None;
+    match t {
+        Some(64) => println!("Yes"),
+        _ => println!("No"),
+    }
+    let i = 0;
+    if let 0 = i {
+        println!("zero");
+    }
 }
